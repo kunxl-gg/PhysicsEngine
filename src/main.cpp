@@ -7,10 +7,16 @@ int main() {
 		std::cout << "Failed to initialize GLFW" << std::endl;
 		return -1;
 	}  
+
 	GLFWwindow* window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
 	if (!window) {
 		std::cout << "Failed to create window" << std::endl;
 		glfwTerminate();
+		return -1;
+	}
+
+	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
 	}
 
